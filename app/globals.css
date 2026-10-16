@@ -1,0 +1,512 @@
+/* Brief
+   Paper #ECEEEF  Ink #17191E  Soft #2C313A
+   Muted #4E5662  Line #C9CED6  Stamp #8E2A2A
+   One article column. Besley for the piece, Commissioner for the furniture.
+*/
+
+:root {
+  --paper: #eceeef;
+  --ink: #17191e;
+  --ink-soft: #2c313a;
+  --muted: #4e5662;
+  --line: #c9ced6;
+  --stamp: #8e2a2a;
+  --serif: var(--font-serif), "Iowan Old Style", Palatino, Georgia, serif;
+  --sans: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
+  --sheet: 52rem;
+  --measure: 39rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink-soft);
+  font-family: var(--serif);
+  font-size: 1.075rem;
+  font-weight: 450;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+}
+
+body::before {
+  content: "";
+  display: block;
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  height: 6px;
+  background: var(--stamp);
+}
+
+::selection {
+  background: var(--stamp);
+  color: #f6f4f2;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+p,
+h1,
+h2,
+h3,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--ink);
+  font-weight: 540;
+  letter-spacing: -0.024em;
+  text-wrap: balance;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 9;
+  padding: 0.45rem 0.7rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.skip:focus {
+  top: 0.8rem;
+}
+
+.mast-brand,
+.mast-nav,
+.sheet {
+  width: min(var(--sheet), calc(100% - 2.25rem));
+  margin-inline: auto;
+}
+
+.mast-brand,
+.byline,
+.mast-nav,
+.meta,
+.section-num,
+.lead figcaption,
+.colophon,
+.eyebrow,
+.place,
+.contact-links,
+.proof {
+  font-family: var(--sans);
+}
+
+.mast-brand {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 520;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.mast-nav {
+  position: sticky;
+  top: 6px;
+  z-index: 5;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.mast-name {
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.mast-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.mast-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.mast-links a::before {
+  content: "";
+  width: 0.45rem;
+  height: 2px;
+  background: transparent;
+}
+
+.mast-links a[aria-current="true"] {
+  color: var(--ink);
+}
+
+.mast-links a[aria-current="true"]::before {
+  background: var(--stamp);
+}
+
+.opener {
+  padding-top: 1.35rem;
+  scroll-margin-top: 4.75rem;
+}
+
+.eyebrow {
+  color: var(--stamp);
+  font-size: 0.75rem;
+  font-weight: 560;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 16em;
+  margin-top: 0.55rem;
+  font-size: clamp(2.3rem, 4.2vw, 3.45rem);
+  font-weight: 520;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+
+.deck {
+  max-width: 34em;
+  margin-top: 0.75rem;
+  color: var(--ink);
+  font-size: 1.22rem;
+  line-height: 1.4;
+}
+
+.byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  width: min(var(--measure), 100%);
+  margin: 1.1rem auto 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.byline span:first-child {
+  color: var(--ink);
+}
+
+.lead {
+  width: min(32rem, 100%);
+  margin: 0.85rem auto 0;
+}
+
+.lead img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lead figcaption {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.prose {
+  width: min(var(--measure), 100%);
+  margin-inline: auto;
+  padding-bottom: 3.5rem;
+}
+
+.standfirst {
+  margin-top: 1.5rem;
+  font-size: 1.16rem;
+  line-height: 1.55;
+}
+
+.standfirst::first-letter {
+  float: left;
+  margin: 0.05em 0.12em 0 0;
+  color: var(--ink);
+  font-size: 3.15rem;
+  font-weight: 520;
+  line-height: 0.78;
+}
+
+.section {
+  margin-top: 2rem;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--ink);
+  scroll-margin-top: 4.75rem;
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.35rem 0.75rem;
+  align-items: baseline;
+}
+
+.section-num {
+  color: var(--stamp);
+  font-size: 0.75rem;
+  font-weight: 560;
+  letter-spacing: 0.08em;
+}
+
+.section-head h2 {
+  font-size: 1.85rem;
+  line-height: 1.1;
+}
+
+.section-head .deck {
+  margin-top: 0.3rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  font-family: var(--serif);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.entry {
+  padding-top: 1.15rem;
+}
+
+.meta {
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 520;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.when {
+  letter-spacing: 0.06em;
+}
+
+.entry h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.42rem;
+  line-height: 1.22;
+}
+
+.entry p + p {
+  margin-top: 0.45rem;
+}
+
+mark {
+  background: none;
+  color: var(--stamp);
+  font-weight: 560;
+  padding: 0;
+}
+
+.proof {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+  color: var(--stamp);
+  font-size: 0.88rem;
+  font-weight: 560;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.proof li::after {
+  content: "·";
+  margin: 0 0.5rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.proof li:last-child::after {
+  content: none;
+}
+
+.entry a,
+.contact-links a {
+  color: var(--ink);
+  text-decoration-color: var(--stamp);
+}
+
+.entry a:hover,
+.contact-links a:hover,
+.email:hover,
+.mast-name:hover {
+  color: var(--stamp);
+}
+
+.email-wrap {
+  margin-top: 0.95rem;
+}
+
+.email {
+  color: var(--ink);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 540;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.place {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.colophon {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.4rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (min-width: 900px) {
+  .section-head {
+    display: block;
+    position: relative;
+  }
+
+  .section-num {
+    position: absolute;
+    top: 0.42rem;
+    right: calc(100% + 0.85rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .mast-nav,
+  .colophon {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .mast-links {
+    flex-wrap: nowrap;
+    gap: 0.7rem;
+  }
+
+  .mast-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
+  }
+
+  .section-head {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .standfirst::first-letter {
+    font-size: 2.7rem;
+  }
+
+  h1 {
+    max-width: none;
+  }
+
+  .opener,
+  .section {
+    scroll-margin-top: 6.75rem;
+  }
+}
+
+@media print {
+  body::before,
+  .skip,
+  .mast-links {
+    display: none;
+  }
+
+  .mast-nav {
+    position: static;
+  }
+
+  .lead img {
+    break-inside: avoid;
+  }
+
+  .entry {
+    break-inside: avoid;
+  }
+}
