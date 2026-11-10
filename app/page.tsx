@@ -20,7 +20,9 @@ export default function Page() {
             <div>
               <p className="eyebrow">Founder&apos;s Office, GTM at Finifi</p>
               <h1>I sell to the people who run the company.</h1>
-              <p className="deck">Cold calls, demos, and the close, with CXOs and finance leaders.</p>
+              <p className="deck">
+                Cold calls, demos, and the close, with CXOs and business leaders across functions (delivery, IT, sales and more).
+              </p>
             </div>
             {portrait ? (
               <figure className="portrait">
@@ -61,7 +63,7 @@ export default function Page() {
 
             <article className="entry">
               <p className="meta">Finifi · Nov 2026 – present</p>
-              <h3>Selling to CXOs and finance leaders.</h3>
+              <h3>Selling to CXOs and business leaders across functions.</h3>
               <p>
                 In the Founder&apos;s Office, on GTM. The pipeline runs from cold outreach to the demo to the close.{" "}
                 <a href={site.finifi} rel="noopener noreferrer">
@@ -207,7 +209,9 @@ export default function Page() {
               <p className="section-num">{contactNum}</p>
               <div>
                 <h2>Write to me</h2>
-                <p className="deck">On selling to finance leaders, operating at an early company, or a note worth a reply.</p>
+                <p className="deck">
+                  On selling to CXOs and business leaders across functions, operating at an early company, or a note worth a reply.
+                </p>
               </div>
             </header>
             <p className="email-wrap">

@@ -18,7 +18,7 @@ const sans = Commissioner({
 
 const title = "Hardik Pandey — Founder's Office, GTM";
 const description =
-  "Hardik Pandey works in the Founder's Office at Finifi, on GTM. He sells to CXOs and finance leaders, from cold outreach to the close.";
+  "Hardik Pandey works in the Founder's Office at Finifi, on GTM. He sells to CXOs and business leaders across functions (delivery, IT, sales and more), from cold outreach to the close.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
     title,
     description:
-      "Founder's Office, GTM at Finifi. Enterprise sales to CXOs and finance leaders, and notes on the work.",
+      "Founder's Office, GTM at Finifi. Enterprise sales to CXOs and business leaders across functions (delivery, IT, sales and more).",
     type: "profile",
     url: site.url,
   },
