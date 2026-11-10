@@ -13,8 +13,8 @@
   --stamp: #8e2a2a;
   --serif: var(--font-serif), "Iowan Old Style", Palatino, Georgia, serif;
   --sans: var(--font-sans), "Avenir Next", "Segoe UI", sans-serif;
-  --sheet: 52rem;
-  --measure: 39rem;
+  --sheet: 60rem;
+  --measure: 43rem;
 }
 
 *,
@@ -140,7 +140,9 @@ h3 {
 .eyebrow,
 .place,
 .contact-links,
-.proof {
+.proof,
+.era,
+.quiet {
   font-family: var(--sans);
 }
 
@@ -228,6 +230,37 @@ h3 {
   scroll-margin-top: 4.75rem;
 }
 
+.portrait {
+  width: 6.75rem;
+  margin-top: 1.15rem;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 1px solid var(--ink);
+  border-top: 0.42rem solid var(--stamp);
+}
+
+@media (min-width: 800px) {
+  .opener-top.has-portrait {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 7.5rem;
+    column-gap: 2.25rem;
+    align-items: end;
+  }
+
+  .portrait {
+    width: 7.5rem;
+    margin-top: 0.2rem;
+    justify-self: end;
+  }
+}
+
 .eyebrow {
   color: var(--stamp);
   font-size: 0.75rem;
@@ -272,7 +305,7 @@ h1 {
 }
 
 .lead {
-  width: min(32rem, 100%);
+  width: min(36rem, 100%);
   margin: 1.35rem auto 0;
 }
 
@@ -402,8 +435,45 @@ mark {
   content: none;
 }
 
+.era {
+  margin-top: 1.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 560;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.writing li {
+  padding-top: 1.15rem;
+}
+
+.writing a {
+  color: var(--ink);
+  font-size: 1.32rem;
+  font-weight: 540;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-decoration-color: var(--line);
+}
+
+.writing .meta {
+  margin-top: 0.28rem;
+  margin-bottom: 0;
+}
+
+.quiet {
+  margin-top: 2.65rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .entry a,
-.contact-links a {
+.contact-links a,
+.quiet a,
+.writing a {
   color: var(--ink);
   text-decoration-color: var(--stamp);
 }
@@ -411,7 +481,9 @@ mark {
 .entry a:hover,
 .contact-links a:hover,
 .email:hover,
-.mast-name:hover {
+.mast-name:hover,
+.quiet a:hover,
+.writing a:hover {
   color: var(--stamp);
 }
 
@@ -491,9 +563,9 @@ mark {
   }
 
   .mast-links {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 0.85rem;
+    gap: 0.45rem 0.85rem;
     width: 100%;
   }
 
@@ -547,7 +619,9 @@ mark {
     break-inside: avoid;
   }
 
-  .entry {
+  .entry,
+  .writing li,
+  .portrait {
     break-inside: avoid;
   }
 }

@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { posts } from "@/content/writing";
 
 const links = [
   { href: "#thesis", label: "Thesis" },
   { href: "#work", label: "Work" },
   { href: "#record", label: "Record" },
+  ...(posts.length > 0 ? [{ href: "#writing", label: "Writing" }] : []),
   { href: "#contact", label: "Close" },
 ];
 

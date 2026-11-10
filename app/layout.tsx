@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Besley, Commissioner } from "next/font/google";
+import { site } from "@/content/site";
 import "./globals.css";
 
 const serif = Besley({
@@ -15,16 +16,21 @@ const sans = Commissioner({
   variable: "--font-sans",
 });
 
+const title = "Hardik Pandey — Founder's Office, GTM";
+const description =
+  "Hardik Pandey works in the Founder's Office at Finifi, on GTM. He sells to CXOs and finance leaders, from cold outreach to the close.";
+
 export const metadata: Metadata = {
-  title: "Hardik Pandey — Founder's Office, Chief of Staff, Strategy",
-  description:
-    "Hardik Pandey is a Founder's Office operator in Bangalore, open to Founder's Office, Chief of Staff, and strategy consulting roles.",
+  metadataBase: new URL(site.url),
+  title,
+  description,
   icons: { icon: "/favicon.svg" },
   openGraph: {
-    title: "Hardik Pandey — Founder's Office, Chief of Staff, Strategy",
+    title,
     description:
-      "Operator for product, capital, people, and launch. Open to Founder's Office, Chief of Staff, and strategy consulting.",
+      "Founder's Office, GTM at Finifi. Enterprise sales to CXOs and finance leaders, and notes on the work.",
     type: "profile",
+    url: site.url,
   },
 };
 
@@ -42,17 +48,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Hardik Pandey",
-              email: "hardikp1351@gmail.com",
-              telephone: "+91-9028408407",
-              jobTitle: "Founder's Office",
+              name: site.name,
+              url: site.url,
+              email: site.email,
+              telephone: site.phoneTel,
+              jobTitle: "Founder's Office, GTM",
+              worksFor: {
+                "@type": "Organization",
+                name: "Finifi",
+                url: site.finifi,
+              },
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Bangalore",
                 addressRegion: "Karnataka",
                 addressCountry: "IN",
               },
-              sameAs: ["https://www.linkedin.com/in/hardik-pandey-622621213"],
+              sameAs: [site.linkedin, site.x],
             }),
           }}
         />

@@ -1,6 +1,13 @@
 import { Masthead } from "@/components/Masthead";
+import { site } from "@/content/site";
+import { formatPostDate, postsByDate } from "@/content/writing";
+import { headshotSrc } from "@/lib/headshot";
 
 export default function Page() {
+  const portrait = headshotSrc();
+  const writing = postsByDate();
+  const contactNum = writing.length > 0 ? "04" : "03";
+
   return (
     <>
       <a className="skip" href="#thesis">
@@ -9,31 +16,38 @@ export default function Page() {
       <Masthead />
       <main className="sheet">
         <header className="opener" id="thesis">
-          <p className="eyebrow">Open to Founder&apos;s Office, Chief of Staff, and strategy consulting</p>
-          <h1>I turn a founder&apos;s intent into work the company can run.</h1>
-          <p className="deck">
-            Product scope, investor materials, hiring, vendors, and launch. Written down, assigned, and finished.
-          </p>
+          <div className={portrait ? "opener-top has-portrait" : "opener-top"}>
+            <div>
+              <p className="eyebrow">Founder&apos;s Office, GTM at Finifi</p>
+              <h1>I sell to the people who run the company.</h1>
+              <p className="deck">Cold calls, demos, and the close, with CXOs and finance leaders.</p>
+            </div>
+            {portrait ? (
+              <figure className="portrait">
+                <img src={portrait} alt={site.headshotAlt} width={240} height={300} />
+              </figure>
+            ) : null}
+          </div>
           <p className="byline">
             <span>Hardik Pandey</span>
             <span>Bangalore</span>
-            <span>2025 – 2026</span>
+            <span>2026</span>
           </p>
         </header>
 
         <figure className="lead">
           <img
             src="/lead.png"
-            alt="A hand-drawn note that reads Get this running, beside a brief with a red file tab. The brief reads Hire, Scope it, Pitch, Ship. A pencil lies across the page."
+            alt="A hand-drawn note that reads Get the meeting, beside a brief with a red file tab. The brief reads Call, Scope it, Demo, Close. A pencil lies across the page."
             width={842}
-            height={659}
+            height={646}
           />
-          <figcaption>From a note to a brief.</figcaption>
+          <figcaption>From the first call to the close.</figcaption>
         </figure>
 
         <div className="prose">
           <p className="standfirst">
-            Most recently, <mark>Founder&apos;s Office</mark> at a <mark>stealth startup</mark>, April 2025 to October 2026. Before that, cybersecurity at <mark>Accenture</mark>. Special projects and business operations are the same profile.
+            Most recently, <mark>Founder&apos;s Office, GTM</mark> at <mark>Finifi</mark>, November 2026 to present. Before that, the same office at a <mark>stealth startup</mark>, April 2025 to October 2026, and cybersecurity at <mark>Accenture</mark>.
           </p>
 
           <section className="section" id="work">
@@ -41,9 +55,23 @@ export default function Page() {
               <p className="section-num">01</p>
               <div>
                 <h2>Selected work</h2>
-                <p className="deck">Stealth startup, April 2025 to October 2026.</p>
+                <p className="deck">Finifi, November 2026 to present. A stealth startup before that.</p>
               </div>
             </header>
+
+            <article className="entry">
+              <p className="meta">Finifi · Nov 2026 – present</p>
+              <h3>Selling to CXOs and finance leaders.</h3>
+              <p>
+                In the Founder&apos;s Office, on GTM. The pipeline runs from cold outreach to the demo to the close.{" "}
+                <a href={site.finifi} rel="noopener noreferrer">
+                  Finifi
+                </a>{" "}
+                is an operations-AI platform for enterprise finance teams: order-to-cash, procure-to-pay, and reconciliation.
+              </p>
+            </article>
+
+            <p className="era">Stealth startup · Apr 2025 – Oct 2026</p>
 
             <article className="entry">
               <p className="meta">People</p>
@@ -117,9 +145,7 @@ export default function Page() {
             <article className="entry">
               <p className="meta when">Mar 2024 – Jun 2024</p>
               <h3>Associate Trainee, Accenture</h3>
-              <p>
-                Trained in application security: dynamic and static testing, the OWASP Top 10, Burp Suite, and OWASP ZAP.
-              </p>
+              <p>Trained in application security: dynamic and static testing, the OWASP Top 10, Burp Suite, and OWASP ZAP.</p>
             </article>
 
             <article className="entry">
@@ -140,27 +166,68 @@ export default function Page() {
             </article>
           </section>
 
+          {writing.length > 0 ? (
+            <section className="section" id="writing">
+              <header className="section-head">
+                <p className="section-num">03</p>
+                <div>
+                  <h2>Writing</h2>
+                  <p className="deck">Notes on business, enterprise GTM, and how companies buy.</p>
+                </div>
+              </header>
+              <ul className="writing">
+                {writing.map((post) => (
+                  <li key={post.url}>
+                    <a href={post.url} rel="noopener noreferrer">
+                      {post.title}
+                    </a>
+                    <p className="meta">
+                      {post.platform} · {formatPostDate(post.date)}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : (
+            <p className="quiet">
+              The writing is on{" "}
+              <a href={site.x} rel="noopener noreferrer">
+                X
+              </a>{" "}
+              and{" "}
+              <a href={site.linkedin} rel="noopener noreferrer">
+                LinkedIn
+              </a>
+              .
+            </p>
+          )}
+
           <section className="section" id="contact">
             <header className="section-head">
-              <p className="section-num">03</p>
+              <p className="section-num">{contactNum}</p>
               <div>
                 <h2>Write to me</h2>
-                <p className="deck">Founder&apos;s Office, Chief of Staff, strategy consulting, or special projects.</p>
+                <p className="deck">On selling to finance leaders, operating at an early company, or a note worth a reply.</p>
               </div>
             </header>
             <p className="email-wrap">
-              <a className="email" href="mailto:hardikp1351@gmail.com">
-                hardikp1351@gmail.com
+              <a className="email" href={`mailto:${site.email}`}>
+                {site.email}
               </a>
             </p>
             <ul className="contact-links">
               <li>
-                <a href="https://www.linkedin.com/in/hardik-pandey-622621213" rel="noopener noreferrer">
+                <a href={site.linkedin} rel="noopener noreferrer">
                   LinkedIn
                 </a>
               </li>
               <li>
-                <a href="tel:+919028408407">+91 90284 08407</a>
+                <a href={site.x} rel="noopener noreferrer">
+                  X
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${site.phoneTel}`}>{site.phoneDisplay}</a>
               </li>
               <li>
                 <a href="/Hardik-Pandey-Resume.pdf" download>
