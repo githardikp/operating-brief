@@ -1,73 +1,82 @@
 import type { Metadata, Viewport } from "next";
-import { Besley, Commissioner } from "next/font/google";
+import { Caveat, EB_Garamond } from "next/font/google";
+import { Motion } from "@/components/Motion";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const serif = Besley({
+const eb = EB_Garamond({
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
   style: ["normal", "italic"],
   display: "swap",
-  variable: "--font-serif",
+  variable: "--font-eb",
+  preload: true,
 });
 
-const sans = Commissioner({
+const caveat = Caveat({
   subsets: ["latin"],
+  weight: ["500", "600"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-caveat",
+  preload: false,
 });
-
-const title = "Hardik Pandey — Founder's Office, GTM";
-const description =
-  "Hardik Pandey works in the Founder's Office at Finifi, on GTM. He sells to CXOs and business leaders across functions (delivery, IT, sales and more), from cold outreach to the close.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title,
-  description,
-  icons: { icon: "/favicon.svg" },
+  title: {
+    default: site.title,
+    template: "%s — Hardik Pandey",
+  },
+  description: site.description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title,
-    description:
-      "Founder's Office, GTM at Finifi. Enterprise sales to CXOs and business leaders across functions (delivery, IT, sales and more).",
-    type: "profile",
+    title: site.ogTitle,
+    description: site.ogDescription,
+    type: "website",
     url: site.url,
+    siteName: site.name,
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: site.twitterCreator,
+    title: site.ogTitle,
+    description: site.ogDescription,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ECEEEF",
+  themeColor: "#F1E6CF",
+  colorScheme: "light",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  jobTitle: site.jobTitle,
+  description: site.description,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.locality,
+    addressCountry: site.country,
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: site.alumniOf,
+  },
+  sameAs: [site.x, site.linkedin],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${eb.variable} ${caveat.variable}`} suppressHydrationWarning>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: site.name,
-              url: site.url,
-              email: site.email,
-              telephone: site.phoneTel,
-              jobTitle: "Founder's Office, GTM",
-              worksFor: {
-                "@type": "Organization",
-                name: "Finifi",
-                url: site.finifi,
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Bangalore",
-                addressRegion: "Karnataka",
-                addressCountry: "IN",
-              },
-              sameAs: [site.linkedin, site.x],
-            }),
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.classList.add("js")' }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <Motion />
         {children}
       </body>
     </html>
